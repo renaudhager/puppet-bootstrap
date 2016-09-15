@@ -1,0 +1,7 @@
+---
+:cachedir: /opt/puppetlabs/server/data/puppetserver/r10k
+:sources:
+  control:
+    basedir: /etc/puppetlabs/code/environments
+    prefix: false
+    remote: https://github.com/renaudhager/puppet-masterless.git
