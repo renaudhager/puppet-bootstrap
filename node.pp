@@ -15,6 +15,6 @@ package { 'git':
 
 # Git clone of puppet code
 exec { 'gitclone':
-  command => 'git clone https://github.com/renaudhager/puppet-masterless.git /etc/puppetlabs/code/environments/production',
+  command => '/usr/bin/git clone https://github.com/renaudhager/puppet-masterless.git /etc/puppetlabs/code/environments/production',
   require => Package['git'],
 }
