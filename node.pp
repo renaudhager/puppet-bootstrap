@@ -36,31 +36,8 @@ exec { 'rmproduction':
   command => '/bin/rm -rf /etc/puppetlabs/code/environments/production',
 }
 
-# # Install git
-# package { 'git':
-#   ensure => 'present',
-# }
-
-# package { 'librarian-puppet':
-#   ensure   => 'present',
-#   provider => 'gem',
-# }
-
-
-
-
-
-# Git clone of puppet code
-# exec { 'gitclone':
-#   command => '/usr/bin/git clone https://github.com/renaudhager/puppet-masterless.git /etc/puppetlabs/code/environments/production',
-#   require => [
-#     Package['git'],
-#     Exec['rmproduction'],
-#   ],
-# }
-
-# exec { 'installmodule':
-#   command => '/usr/local/bin/librarian-puppet install',
-#   requied => Exec['gitclone'],
-#
-# }
+# Execution of puppet run
+exec{ 'puppet_apply':
+  command => '/opt/puppetlabs/bin/puppet apply /etc/puppetlabs/code/environments/production/site.pp',
+  require => Exec['r10k'],
+}
