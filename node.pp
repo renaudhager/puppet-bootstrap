@@ -13,8 +13,15 @@ package { 'git':
   ensure => 'present',
 }
 
+# Remove production original dir
+exec { 'rmproduction':
+  command => '/bin/rm -rf /etc/puppetlabs/code/environments/production',
+}
 # Git clone of puppet code
 exec { 'gitclone':
   command => '/usr/bin/git clone https://github.com/renaudhager/puppet-masterless.git /etc/puppetlabs/code/environments/production',
-  require => Package['git'],
+  require => [
+    Package['git'],
+    Exec['rmproduction'],
+  ],
 }
