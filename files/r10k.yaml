@@ -4,4 +4,4 @@
   control:
     basedir: /etc/puppetlabs/code/environments
     prefix: false
-    remote: https://github.com/renaudhager/puppet-masterless.git
+    remote: https://github.com/renaudhager/puppet.git
