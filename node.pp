@@ -28,7 +28,7 @@ exec {'r10k_installation':
 }
 
 exec{ 'r10k':
-  command => '/opt/puppetlabs/puppet/bin/r10k deploy environment --puppetfile',
+  command => '/opt/puppetlabs/puppet/bin/r10k deploy environment --puppetfile -v',
   require => [
     Exec['rmproduction', 'r10k_installation'],
     File['/etc/puppetlabs/r10k/r10k.yaml']
