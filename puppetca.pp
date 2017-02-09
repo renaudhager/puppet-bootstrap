@@ -1,4 +1,9 @@
-# Boostrap node with puppet
+# Boostrap a puppet ca node
+
+# Remove production original dir
+exec { 'rmproduction':
+  command => '/bin/rm -rf /etc/puppetlabs/code/environments/production',
+}
 
 # Setup hiera file
 file { '/etc/puppetlabs/code/hiera.yaml':
@@ -33,15 +38,4 @@ exec{ 'r10k':
     Exec['rmproduction', 'r10k_installation'],
     File['/etc/puppetlabs/r10k/r10k.yaml']
   ]
-}
-
-# Remove production original dir
-exec { 'rmproduction':
-  command => '/bin/rm -rf /etc/puppetlabs/code/environments/production',
-}
-
-# Execution of puppet run
-exec{ 'puppet_apply':
-  command => '/opt/puppetlabs/bin/puppet apply /etc/puppetlabs/code/environments/production/site.pp',
-  require => Exec['r10k'],
 }

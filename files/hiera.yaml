@@ -4,18 +4,14 @@
 :yaml:
   :datadir: /etc/puppetlabs/code/environments/%{environment}/hieradata
 :hierarchy:
-  - "nodes/%{::fqdn}/%{calling_class}"
-  - "nodes/%{::fqdn}/common"
-  - "os/name/%{::operatingsystem}/%{::operatingsystemrelease}/%{calling_class}"
-  - "os/name/%{::operatingsystem}/%{::operatingsystemrelease}/common"
+  - "nodes/%{::clientcert}/%{calling_class}"
+  - "nodes/%{::clientcert}/common"
+  - "os/distrib/%{::lsbdistcodename}/%{calling_class}"
+  - "os/distrib/%{::lsbdistcodename}/common"
   - "os/name/%{::operatingsystem}/%{calling_class}"
   - "os/name/%{::operatingsystem}/common"
   - "os/family/%{::osfamily}/%{calling_class}"
   - "os/family/%{::osfamily}/common"
-  - "env/%{medallia_env}/%{calling_class}"
-  - "env/%{medallia_env}/common"
-  - "clusters/%{role}/%{cluster}/%{calling_class}"
-  - "clusters/%{role}/%{cluster}/common"
   - "roles/%{role}/%{calling_class}"
   - "roles/%{role}/common"
   - "datacenters/%{datacenter}/%{calling_class}"
