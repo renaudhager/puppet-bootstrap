@@ -5,14 +5,6 @@ exec { 'rmproduction':
   command => '/bin/rm -rf /etc/puppetlabs/code/environments/production',
 }
 
-# Setup hiera file
-file { '/etc/puppetlabs/code/hiera.yaml':
-  owner  => 'root',
-  group  => 'root',
-  mode   => '0644',
-  source => 'file:///tmp/puppet-bootstrap/files/hiera.yaml',
-}
-
 # Install r10k
 file { '/etc/puppetlabs/r10k':
   ensure => 'directory',
